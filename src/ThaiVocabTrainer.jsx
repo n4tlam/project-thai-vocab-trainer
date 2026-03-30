@@ -17,9 +17,17 @@ const FontLoader = () => (
       --muted:     #8a7a62;
       --shadow:    rgba(26,18,9,0.10);
     }
-    body { background: var(--paper); font-family: 'DM Sans', sans-serif; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--paper);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior: none;
+    }
+    button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    input  { -webkit-tap-highlight-color: transparent; }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes pulse-ring {
@@ -27,7 +35,7 @@ const FontLoader = () => (
       70%  { transform: scale(1.35); opacity: 0; }
       100% { transform: scale(1.35); opacity: 0; }
     }
-    .screen-enter { animation: fadeUp 0.4s ease both; }
+    .screen-enter { animation: fadeUp 0.3s ease both; }
     .pulse-ring { position: relative; }
     .pulse-ring::before {
       content: '';
@@ -37,6 +45,8 @@ const FontLoader = () => (
       animation: pulse-ring 1.4s ease-out infinite;
       pointer-events: none;
     }
+    /* prevent iOS bounce on body but allow scroll inside containers */
+    .scrollable { overflow-y: auto; -webkit-overflow-scrolling: touch; }
   `}</style>
 );
 
@@ -925,57 +935,53 @@ function SetupScreen({ onStart }) {
       <div style={{
         position: "sticky", top: 0, zIndex: 50,
         background: "var(--paper)", borderBottom: "2px solid var(--aged)",
-        padding: "0.7rem 1.5rem",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: "1rem", flexWrap: "wrap",
+        padding: "0.6rem 1rem",
+        display: "flex", flexDirection: "column", gap: "0.5rem",
         boxShadow: "0 2px 8px var(--shadow)"
       }}>
-        <div style={{ fontSize: "0.8rem", color: "var(--muted)", fontWeight: 600 }}>
-          <span style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--jade)", marginRight: 4 }}>{vocab.length}</span>
-          words in category
+        {/* Row 1: word count + start button */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
+          <div style={{ fontSize: "0.8rem", color: "var(--muted)", fontWeight: 600 }}>
+            <span style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--jade)", marginRight: 4 }}>{vocab.length}</span>
+            words
+          </div>
+          <button onClick={startQuiz} style={{
+            background: "var(--jade)", color: "#fff", border: "none",
+            padding: "0.55rem 1.3rem", borderRadius: 8, fontWeight: 700,
+            fontSize: "0.9rem", cursor: "pointer",
+            fontFamily: "'DM Sans', sans-serif"
+          }}>Start →</button>
         </div>
-
-        <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
-          <span style={{ fontSize: "0.72rem", color: "var(--muted)", marginRight: 4, letterSpacing: "0.05em", textTransform: "uppercase" }}>Questions</span>
+        {/* Row 2: question count */}
+        <div style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
+          <span style={{ fontSize: "0.7rem", color: "var(--muted)", marginRight: 2, letterSpacing: "0.05em", textTransform: "uppercase" }}>Questions</span>
           {[5, 10, 15, 20].map(n => (
             <button key={n} onClick={() => setQCount(n)} style={{
-              padding: "0.28rem 0.65rem", borderRadius: 6, border: "2px solid",
+              padding: "0.22rem 0.6rem", borderRadius: 6, border: "2px solid",
               borderColor: qCount === n ? "var(--gold)" : "var(--aged)",
               background: qCount === n ? "rgba(200,146,42,0.1)" : "transparent",
               color: qCount === n ? "var(--gold)" : "var(--muted)",
-              fontWeight: 700, fontSize: "0.85rem", cursor: "pointer", transition: "all 0.15s",
+              fontWeight: 700, fontSize: "0.82rem", cursor: "pointer",
               fontFamily: "'DM Sans', sans-serif"
             }}>{n}</button>
           ))}
         </div>
-
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.3rem" }}>
-          <button onClick={startQuiz} style={{
-            background: "var(--jade)", color: "#fff", border: "none",
-            padding: "0.55rem 1.4rem", borderRadius: 8, fontWeight: 700,
-            fontSize: "0.9rem", cursor: "pointer", transition: "background 0.15s",
-            fontFamily: "'DM Sans', sans-serif"
-          }}
-            onMouseOver={e => e.currentTarget.style.background = "var(--jade-lt)"}
-            onMouseOut={e => e.currentTarget.style.background = "var(--jade)"}
-          >Start Practice →</button>
-          {error && <span style={{ fontSize: "0.73rem", color: "var(--vermilion)", maxWidth: 260, textAlign: "right" }}>{error}</span>}
-        </div>
+        {error && <span style={{ fontSize: "0.72rem", color: "var(--vermilion)" }}>{error}</span>}
       </div>
 
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "2rem 1.5rem 4rem" }}>
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "1.2rem 1rem 5rem" }}>
 
         {/* Title */}
-        <div style={{ textAlign: "center", padding: "1.5rem 0 2rem", borderBottom: "2px solid var(--gold)", marginBottom: "2rem" }}>
+        <div style={{ textAlign: "center", padding: "1rem 0 1.2rem", borderBottom: "2px solid var(--gold)", marginBottom: "1.2rem" }}>
           <div style={{ fontFamily: "'Noto Serif Thai', serif", fontSize: "1.5rem", color: "var(--gold)", marginBottom: 4 }}>ไพ่คำศัพท์</div>
-          <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.2rem", color: "var(--ink)", letterSpacing: "-0.02em" }}>Thai Vocab Trainer</h1>
+          <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.8rem", color: "var(--ink)", letterSpacing: "-0.02em" }}>Thai Vocab Trainer</h1>
           <div style={{ fontSize: "0.75rem", color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 6 }}>
             {ALL_VOCAB.length} words across {CATEGORIES.length} categories
           </div>
         </div>
 
         {/* Mode toggle */}
-        <div style={{ marginBottom: "2rem" }}>
+        <div style={{ marginBottom: "1.2rem" }}>
           <div style={{ fontSize: "0.72rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.6rem", fontWeight: 600 }}>Practice Mode</div>
           <div style={{ display: "flex", gap: "0.75rem" }}>
             {[
@@ -983,7 +989,7 @@ function SetupScreen({ onStart }) {
               { id: "audio",  icon: "🔊", label: "Audio",   desc: "Hear the word, don't see it" },
             ].map(m => (
               <button key={m.id} onClick={() => setMode(m.id)} style={{
-                flex: 1, padding: "0.9rem 1rem", borderRadius: 10,
+                flex: 1, padding: "0.65rem 0.8rem", borderRadius: 10,
                 border: `2px solid ${mode === m.id ? "var(--gold)" : "var(--aged)"}`,
                 background: mode === m.id ? "rgba(200,146,42,0.07)" : "#fff",
                 cursor: "pointer", textAlign: "left", transition: "all 0.15s",
@@ -1003,13 +1009,13 @@ function SetupScreen({ onStart }) {
             Category
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "0.6rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "0.5rem" }}>
             {CATEGORIES.map(cat => {
               const count = ALL_VOCAB.filter(v => v.category === cat).length;
               const active = selectedCat === cat;
               return (
                 <button key={cat} onClick={() => { setSelectedCat(cat); setError(""); }} style={{
-                  padding: "0.75rem 1rem", borderRadius: 10,
+                  padding: "0.6rem 0.75rem", borderRadius: 10,
                   border: `2px solid ${active ? "var(--gold)" : "var(--aged)"}`,
                   background: active ? "rgba(200,146,42,0.08)" : "#fff",
                   cursor: "pointer", textAlign: "left", transition: "all 0.15s",
@@ -1128,8 +1134,8 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
       <div style={{
         position: "sticky", top: 0, zIndex: 50,
         background: "var(--ink)", color: "var(--paper)",
-        padding: "0.7rem 1.5rem",
-        display: "flex", alignItems: "center", gap: "1rem"
+        padding: "0.6rem 0.9rem",
+        display: "flex", alignItems: "center", gap: "0.6rem"
       }}>
         <button onClick={() => { cancelSpeak(); onExit(); }} style={{
           background: "none", border: "1.5px solid rgba(255,255,255,0.2)", color: "var(--paper)",
@@ -1145,12 +1151,12 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
         </div>
       </div>
 
-      <div style={{ maxWidth: 580, margin: "0 auto", padding: "2.5rem 1.5rem 4rem" }}>
+      <div style={{ maxWidth: 580, margin: "0 auto", padding: "1rem 0.9rem 2rem" }}>
 
         {/* Question card */}
         <div style={{
-          background: "#fff", borderRadius: 14, padding: "2.5rem 2rem 2rem",
-          boxShadow: "0 4px 24px var(--shadow)", marginBottom: "1.5rem", textAlign: "center",
+          background: "#fff", borderRadius: 14, padding: "1.4rem 1.2rem 1.2rem",
+          boxShadow: "0 4px 24px var(--shadow)", marginBottom: "1rem", textAlign: "center",
           border: "1px solid var(--aged)"
         }}>
           <div style={{ fontSize: "0.7rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem" }}>
@@ -1163,8 +1169,8 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
                 /* Show Thai word — answers are English */
                 <div style={{
                   fontFamily: "'Noto Serif Thai', serif",
-                  fontSize: "clamp(2.2rem, 8vw, 4rem)",
-                  color: "var(--ink)", lineHeight: 1.4, marginBottom: "1.2rem"
+                  fontSize: "clamp(2rem, 10vw, 3.2rem)",
+                  color: "var(--ink)", lineHeight: 1.4, marginBottom: "0.8rem"
                 }}>
                   {q.item.thai}
                 </div>
@@ -1172,8 +1178,8 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
                 /* Show English word — answers are Thai */
                 <div style={{
                   fontFamily: "'DM Serif Display', serif",
-                  fontSize: "clamp(1.6rem, 6vw, 2.8rem)",
-                  color: "var(--ink)", lineHeight: 1.3, marginBottom: "1.2rem",
+                  fontSize: "clamp(1.4rem, 7vw, 2.4rem)",
+                  color: "var(--ink)", lineHeight: 1.3, marginBottom: "0.8rem",
                   letterSpacing: "-0.01em"
                 }}>
                   {q.item.en}
@@ -1188,7 +1194,7 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
               >{speaking ? "🔉" : "🔊"}</button>
             </>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", padding: "1rem 0" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", padding: "0.5rem 0" }}>
               <div style={{ position: "relative" }}>
                 <button
                   onClick={handleSpeak}
@@ -1211,7 +1217,7 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
             </div>
           )}
 
-          <div style={{ marginTop: "1.2rem" }}>
+          <div style={{ marginTop: "0.75rem" }}>
             <span style={{
               display: "inline-block", fontSize: "0.7rem", fontWeight: 600,
               background: q.dir === "th" ? "rgba(200,146,42,0.1)" : "rgba(46,125,94,0.1)",
@@ -1225,7 +1231,7 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
         </div>
 
         {/* Answer options */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem", marginBottom: "1.2rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem", marginBottom: "0.9rem" }}>
           {q.opts.map((opt, idx) => {
             const correct  = opt.thai === q.item.thai;
             const isChosen = chosen === idx;
@@ -1241,7 +1247,7 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
             return (
               <button key={idx} onClick={() => handleAnswer(idx)} disabled={answered} style={{
                 background: bg, border, borderRadius: 10,
-                padding: "0.8rem 0.9rem", cursor: answered ? "default" : "pointer",
+                padding: "0.85rem 0.75rem", cursor: answered ? "default" : "pointer",
                 textAlign: "left", transition: "all 0.15s", color,
                 fontFamily: "'DM Sans', sans-serif",
               }}
@@ -1299,7 +1305,7 @@ function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
 function ScoreRing({ pct }) {
   const r = 80, circ = 2 * Math.PI * r;
   return (
-    <svg width="200" height="200" viewBox="0 0 200 200" style={{ display: "block", margin: "0 auto" }}>
+    <svg width="160" height="160" viewBox="0 0 200 200" style={{ display: "block", margin: "0 auto" }}>
       <circle cx="100" cy="100" r={r} fill="none" stroke="var(--aged)" strokeWidth="12" />
       <circle
         cx="100" cy="100" r={r} fill="none"
@@ -1327,42 +1333,42 @@ function ResultsScreen({ finalScore, total, missedWords, round, onPlayAgain, onE
   return (
     <div className="screen-enter" style={{ minHeight: "100vh", background: "var(--paper)", fontFamily: "'DM Sans', sans-serif" }}>
       <FontLoader />
-      <div style={{ maxWidth: 520, margin: "0 auto", padding: "3rem 1.5rem 4rem" }}>
+      <div style={{ maxWidth: 520, margin: "0 auto", padding: "1.5rem 1rem 4rem" }}>
 
-        <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "1rem" }}>
           <div style={{ fontFamily: "'Noto Serif Thai', serif", fontSize: "0.9rem", color: "var(--gold)", marginBottom: 4 }}>Round {round} Complete</div>
           <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.2rem", color: "var(--ink)" }}>Results</h1>
         </div>
 
-        <div style={{ position: "relative", width: 200, margin: "0 auto 1.5rem" }}>
+        <div style={{ position: "relative", width: 160, margin: "0 auto 1.2rem" }}>
           <ScoreRing pct={displayPct} />
           <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem", color: "var(--ink)", lineHeight: 1 }}>{finalScore}</div>
+            <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.2rem", color: "var(--ink)", lineHeight: 1 }}>{finalScore}</div>
             <div style={{ fontSize: "0.9rem", color: "var(--muted)" }}>/ {total}</div>
           </div>
         </div>
 
-        <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "1rem" }}>
           <div style={{ fontSize: "1.8rem", marginBottom: "0.3rem" }}>{grade.icon}</div>
           <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.5rem", color: "var(--ink)", marginBottom: "0.3rem" }}>{grade.label}</div>
           <div style={{ fontSize: "0.88rem", color: "var(--muted)", fontStyle: "italic" }}>{grade.msg}</div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0.8rem", marginBottom: "1.8rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0.5rem", marginBottom: "1.2rem" }}>
           {[
             { label: "Correct",  val: finalScore,        col: "var(--jade)" },
             { label: "Wrong",    val: total-finalScore,  col: "var(--vermilion)" },
             { label: "Accuracy", val: `${pct}%`,         col: "var(--gold)" },
           ].map(s => (
-            <div key={s.label} style={{ background: "#fff", borderRadius: 10, padding: "1rem", textAlign: "center", border: "1px solid var(--aged)" }}>
-              <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.8rem", color: s.col }}>{s.val}</div>
+            <div key={s.label} style={{ background: "#fff", borderRadius: 10, padding: "0.7rem 0.5rem", textAlign: "center", border: "1px solid var(--aged)" }}>
+              <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.5rem", color: s.col }}>{s.val}</div>
               <div style={{ fontSize: "0.72rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 2 }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         {unique.length > 0 && (
-          <div style={{ background: "#fff", borderRadius: 10, padding: "1.2rem", marginBottom: "1.8rem", border: "1px solid var(--aged)" }}>
+          <div style={{ background: "#fff", borderRadius: 10, padding: "0.9rem", marginBottom: "1.2rem", border: "1px solid var(--aged)" }}>
             <div style={{ fontWeight: 700, color: "var(--ink)", fontSize: "0.8rem", marginBottom: "0.7rem", textTransform: "uppercase", letterSpacing: "0.07em" }}>Words to Review</div>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {unique.map((w, i) => (
@@ -1393,19 +1399,19 @@ function ResultsScreen({ finalScore, total, missedWords, round, onPlayAgain, onE
 
         <div style={{ display: "flex", gap: "0.75rem" }}>
           <button onClick={onEdit} style={{
-            flex: 1, padding: "0.75rem", borderRadius: 8,
+            flex: 1, padding: "0.85rem", borderRadius: 8,
             border: "1.5px solid var(--aged)", background: "transparent",
-            color: "var(--ink)", fontWeight: 600, cursor: "pointer", fontSize: "0.9rem",
-            fontFamily: "'DM Sans', sans-serif", transition: "border-color 0.15s"
+            color: "var(--ink)", fontWeight: 600, cursor: "pointer", fontSize: "0.88rem",
+            fontFamily: "'DM Sans', sans-serif"
           }}
             onMouseOver={e => e.currentTarget.style.borderColor = "var(--gold)"}
             onMouseOut={e => e.currentTarget.style.borderColor = "var(--aged)"}
           >← Change categories</button>
           <button onClick={onPlayAgain} style={{
-            flex: 1, padding: "0.75rem", borderRadius: 8,
+            flex: 1, padding: "0.85rem", borderRadius: 8,
             border: "none", background: "var(--jade)", color: "#fff",
-            fontWeight: 700, cursor: "pointer", fontSize: "0.9rem",
-            fontFamily: "'DM Sans', sans-serif", transition: "background 0.15s"
+            fontWeight: 700, cursor: "pointer", fontSize: "0.88rem",
+            fontFamily: "'DM Sans', sans-serif"
           }}
             onMouseOver={e => e.currentTarget.style.background = "var(--jade-lt)"}
             onMouseOut={e => e.currentTarget.style.background = "var(--jade)"}
