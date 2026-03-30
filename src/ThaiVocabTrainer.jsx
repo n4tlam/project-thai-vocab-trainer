@@ -914,6 +914,7 @@ const CAT_ICONS = {
 function SetupScreen({ onStart }) {
   const [selectedCat, setSelectedCat] = useState(CATEGORIES[0]);
   const [mode, setMode]       = useState("visual");
+  const [direction, setDirection] = useState("mix");  // "th-en" | "en-th" | "mix"
   const [qCount, setQCount]   = useState(15);
   const [error, setError]     = useState("");
 
@@ -924,7 +925,7 @@ function SetupScreen({ onStart }) {
       setError(`This category only has ${vocab.length} word${vocab.length !== 1 ? 's' : ''} — reduce the round size to ${vocab.length} or fewer.`);
       return;
     }
-    onStart({ vocab, mode, qCount });
+    onStart({ vocab, mode, qCount, direction });
   };
 
   return (
@@ -1003,6 +1004,30 @@ function SetupScreen({ onStart }) {
           </div>
         </div>
 
+        {/* Direction dial */}
+        <div style={{ marginBottom: "1.2rem" }}>
+          <div style={{ fontSize: "0.72rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.6rem", fontWeight: 600 }}>Direction</div>
+          <div style={{ display: "flex", background: "var(--aged)", borderRadius: 10, padding: 3, gap: 0 }}>
+            {[
+              { id: "th-en", label: "TH → EN", sub: "Thai prompt" },
+              { id: "mix",   label: "Mix",     sub: "Both ways"   },
+              { id: "en-th", label: "EN → TH", sub: "English prompt" },
+            ].map((d, i) => (
+              <button key={d.id} onClick={() => setDirection(d.id)} style={{
+                flex: 1, padding: "0.55rem 0.4rem", borderRadius: 8,
+                border: "none",
+                background: direction === d.id ? "#fff" : "transparent",
+                boxShadow: direction === d.id ? "0 1px 4px rgba(26,18,9,0.12)" : "none",
+                cursor: "pointer", textAlign: "center", transition: "all 0.18s",
+                fontFamily: "'DM Sans', sans-serif",
+              }}>
+                <div style={{ fontWeight: 700, fontSize: "0.82rem", color: direction === d.id ? "var(--ink)" : "var(--muted)", letterSpacing: "0.01em" }}>{d.label}</div>
+                <div style={{ fontSize: "0.65rem", color: direction === d.id ? "var(--muted)" : "rgba(138,122,98,0.6)", marginTop: 1 }}>{d.sub}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Category selection */}
         <div>
           <div style={{ fontSize: "0.72rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600, marginBottom: "0.75rem" }}>
@@ -1040,13 +1065,14 @@ function SetupScreen({ onStart }) {
 /* ═══════════════════════════════════════════
    QUIZ LOGIC
 ═══════════════════════════════════════════ */
-function buildQuestions(vocab, qCount) {
+function buildQuestions(vocab, qCount, direction) {
   // Each word appears at most once per round — shuffle and slice
   const pool = shuffle([...vocab]).slice(0, qCount);
   return pool.map(item => {
-    // Randomly decide direction: "th" = show Thai, answer English
-    //                            "en" = show English, answer Thai
-    const dir = Math.random() < 0.5 ? "th" : "en";
+    // direction: "th-en" always Thai prompt, "en-th" always English prompt, "mix" = random
+    const dir = direction === "th-en" ? "th"
+              : direction === "en-th" ? "en"
+              : Math.random() < 0.5 ? "th" : "en";
     const others = shuffle(vocab.filter(v => v.thai !== item.thai));
     const distractors = others.slice(0, 3);
     const opts = shuffle([item, ...distractors]);
@@ -1057,8 +1083,8 @@ function buildQuestions(vocab, qCount) {
 /* ═══════════════════════════════════════════
    QUIZ SCREEN
 ═══════════════════════════════════════════ */
-function QuizScreen({ vocab, mode, qCount, round, onExit, onFinish }) {
-  const [questions]    = useState(() => buildQuestions(vocab, qCount));
+function QuizScreen({ vocab, mode, qCount, direction, round, onExit, onFinish }) {
+  const [questions]    = useState(() => buildQuestions(vocab, qCount, direction));
   const [currentQ, setCurrentQ]   = useState(0);
   const [answered, setAnswered]   = useState(false);
   const [chosen, setChosen]       = useState(null);
@@ -1434,7 +1460,7 @@ export default function App() {
   if (screen === "quiz" && config) return (
     <QuizScreen
       key={round}
-      vocab={config.vocab} mode={config.mode} qCount={config.qCount} round={round}
+      vocab={config.vocab} mode={config.mode} qCount={config.qCount} direction={config.direction} round={round}
       onExit={() => { setRound(r => r + 1); setScreen("setup"); }}
       onFinish={res => { setResults(res); setScreen("results"); }}
     />
