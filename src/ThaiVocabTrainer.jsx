@@ -856,7 +856,143 @@ const ALL_VOCAB = [
   { category: "Daily Objects", thai: "กล่องใส่ข้าว", en: "lunchbox / food container" },
   { category: "Daily Objects", thai: "ถุงผ้า", en: "cloth bag / tote bag" },
   { category: "Daily Objects", thai: "สมุดบัญชี", en: "account book / ledger" }
-
+,
+  { category: "Frequently Used Verbs 2", thai: "แนะนำ", en: "to recommend / introduce" },
+  { category: "Frequently Used Verbs 2", thai: "อธิบาย", en: "to explain" },
+  { category: "Frequently Used Verbs 2", thai: "บอก", en: "to tell / inform" },
+  { category: "Frequently Used Verbs 2", thai: "สั่ง", en: "to order / command" },
+  { category: "Frequently Used Verbs 2", thai: "ยอมรับ", en: "to accept / admit" },
+  { category: "Frequently Used Verbs 2", thai: "ปฏิเสธ", en: "to refuse / deny" },
+  { category: "Frequently Used Verbs 2", thai: "เห็นด้วย", en: "to agree" },
+  { category: "Frequently Used Verbs 2", thai: "ไม่เห็นด้วย", en: "to disagree" },
+  { category: "Frequently Used Verbs 2", thai: "สนใจ", en: "to be interested in" },
+  { category: "Frequently Used Verbs 2", thai: "สงสัย", en: "to wonder / be curious" },
+  { category: "Frequently Used Verbs 2", thai: "กังวล", en: "to worry" },
+  { category: "Frequently Used Verbs 2", thai: "หวัง", en: "to hope" },
+  { category: "Frequently Used Verbs 2", thai: "ตั้งใจ", en: "to intend / concentrate" },
+  { category: "Frequently Used Verbs 2", thai: "ยืนยัน", en: "to confirm" },
+  { category: "Frequently Used Verbs 2", thai: "ตรวจสอบ", en: "to check / verify" },
+  { category: "Frequently Used Verbs 2", thai: "แก้ไข", en: "to fix / correct / edit" },
+  { category: "Frequently Used Verbs 2", thai: "ปรับ", en: "to adjust / tune" },
+  { category: "Frequently Used Verbs 2", thai: "เพิ่มขึ้น", en: "to increase / go up" },
+  { category: "Frequently Used Verbs 2", thai: "ลดลง", en: "to decrease / go down" },
+  { category: "Frequently Used Verbs 2", thai: "เปรียบเทียบ", en: "to compare" },
+  { category: "Frequently Used Verbs 2", thai: "แบ่ง", en: "to divide / share out" },
+  { category: "Frequently Used Verbs 2", thai: "รวม", en: "to combine / include" },
+  { category: "Frequently Used Verbs 2", thai: "เชื่อมต่อ", en: "to connect" },
+  { category: "Frequently Used Verbs 2", thai: "ติดต่อ", en: "to contact" },
+  { category: "Frequently Used Verbs 2", thai: "นำ", en: "to lead / bring" },
+  { category: "Frequently Used Verbs 2", thai: "ติดตาม", en: "to follow / track" },
+  { category: "Frequently Used Verbs 2", thai: "หนี", en: "to flee / escape" },
+  { category: "Frequently Used Verbs 2", thai: "ซ่อน", en: "to hide" },
+  { category: "Frequently Used Verbs 2", thai: "ค้นหา", en: "to search / look up" },
+  { category: "Frequently Used Verbs 2", thai: "สังเกต", en: "to observe / notice" },
+  { category: "Frequently Used Verbs 2", thai: "ตรวจ", en: "to inspect / examine" },
+  { category: "Frequently Used Verbs 2", thai: "วางแผน", en: "to plan" },
+  { category: "Frequently Used Verbs 2", thai: "จัดการ", en: "to manage / handle" },
+  { category: "Frequently Used Verbs 2", thai: "จัด", en: "to arrange / organise" },
+  { category: "Frequently Used Verbs 2", thai: "ออกแบบ", en: "to design" },
+  { category: "Frequently Used Verbs 2", thai: "พัฒนา", en: "to develop / improve" },
+  { category: "Frequently Used Verbs 2", thai: "ทดสอบ", en: "to test" },
+  { category: "Frequently Used Verbs 2", thai: "ฝึก", en: "to practise / train" },
+  { category: "Frequently Used Verbs 2", thai: "ฝึกซ้อม", en: "to rehearse / drill" },
+  { category: "Frequently Used Verbs 2", thai: "ปฏิบัติ", en: "to practise / carry out" },
+  { category: "Frequently Used Verbs 2", thai: "เข้าร่วม", en: "to join / participate" },
+  { category: "Frequently Used Verbs 2", thai: "ออกจาก", en: "to leave / exit from" },
+  { category: "Frequently Used Verbs 2", thai: "เดินทางไป", en: "to travel to" },
+  { category: "Frequently Used Verbs 2", thai: "แวะ", en: "to stop by / drop in" },
+  { category: "Frequently Used Verbs 2", thai: "รับประทาน", en: "to eat (formal)" },
+  { category: "Frequently Used Verbs 2", thai: "ดูแล", en: "to take care of" },
+  { category: "Frequently Used Verbs 2", thai: "ปกป้อง", en: "to protect" },
+  { category: "Frequently Used Verbs 2", thai: "ช่วยเหลือ", en: "to assist / support" },
+  { category: "Frequently Used Verbs 2", thai: "ขอ", en: "to ask for / request" },
+  { category: "Frequently Used Verbs 2", thai: "เรียกร้อง", en: "to demand" },
+  { category: "Frequently Used Verbs 2", thai: "อนุญาต", en: "to permit / allow" },
+  { category: "Frequently Used Verbs 2", thai: "ห้าม", en: "to forbid / prohibit" },
+  { category: "Frequently Used Verbs 2", thai: "บังคับ", en: "to force / compel" },
+  { category: "Frequently Used Verbs 2", thai: "กด", en: "to press / push down" },
+  { category: "Frequently Used Verbs 2", thai: "ดึง", en: "to pull" },
+  { category: "Frequently Used Verbs 2", thai: "ผลัก", en: "to push" },
+  { category: "Frequently Used Verbs 2", thai: "โยน", en: "to throw" },
+  { category: "Frequently Used Verbs 2", thai: "จับ", en: "to catch / grab / hold" },
+  { category: "Frequently Used Verbs 2", thai: "ปล่อย", en: "to release / let go" },
+  { category: "Frequently Used Verbs 2", thai: "แตะ", en: "to touch / tap" },
+  { category: "Frequently Used Verbs 2", thai: "ชี้", en: "to point" },
+  { category: "Frequently Used Verbs 2", thai: "เปลี่ยนแปลง", en: "to change / transform" },
+  { category: "Frequently Used Verbs 2", thai: "ประกาศ", en: "to announce" },
+  { category: "Frequently Used Verbs 2", thai: "รายงาน", en: "to report" },
+  { category: "Frequently Used Verbs 2", thai: "บันทึก", en: "to record / save / note down" },
+  { category: "Frequently Used Verbs 2", thai: "พิมพ์", en: "to print / type" },
+  { category: "Frequently Used Verbs 2", thai: "ลงทะเบียน", en: "to register / sign up" },
+  { category: "Frequently Used Verbs 2", thai: "ยกเลิก", en: "to cancel" },
+  { category: "Frequently Used Verbs 2", thai: "เลื่อน", en: "to postpone / slide" },
+  { category: "Frequently Used Verbs 2", thai: "นำเสนอ", en: "to present" },
+  { category: "Frequently Used Verbs 2", thai: "ประเมิน", en: "to evaluate / assess" },
+  { category: "Frequently Used Verbs 2", thai: "คาด", en: "to expect / anticipate" },
+  { category: "Frequently Used Verbs 2", thai: "เดา", en: "to guess" },
+  { category: "Frequently Used Verbs 2", thai: "สรุป", en: "to summarise / conclude" },
+  { category: "Emotions & Mood", thai: "มีความสุข", en: "happy" },
+  { category: "Emotions & Mood", thai: "เป็นสุข", en: "content / at peace" },
+  { category: "Emotions & Mood", thai: "สนุก", en: "fun / enjoyable" },
+  { category: "Emotions & Mood", thai: "สนุกสนาน", en: "joyful / cheerful" },
+  { category: "Emotions & Mood", thai: "ดีใจ", en: "glad / delighted" },
+  { category: "Emotions & Mood", thai: "ปลื้มใจ", en: "proud / pleased" },
+  { category: "Emotions & Mood", thai: "ภูมิใจ", en: "proud (of oneself/others)" },
+  { category: "Emotions & Mood", thai: "อบอุ่นใจ", en: "warm-hearted / comforted" },
+  { category: "Emotions & Mood", thai: "สบายใจ", en: "at ease / relieved" },
+  { category: "Emotions & Mood", thai: "โล่งใจ", en: "relieved / unburdened" },
+  { category: "Emotions & Mood", thai: "หายใจหายคอ", en: "relieved (lit. can breathe again)" },
+  { category: "Emotions & Mood", thai: "ตื้นตันใจ", en: "deeply moved / touched" },
+  { category: "Emotions & Mood", thai: "ซาบซึ้ง", en: "grateful / deeply appreciative" },
+  { category: "Emotions & Mood", thai: "ประทับใจ", en: "impressed / moved" },
+  { category: "Emotions & Mood", thai: "หลงรัก", en: "infatuated / falling in love" },
+  { category: "Emotions & Mood", thai: "คิดถึง", en: "to miss (someone/something)" },
+  { category: "Emotions & Mood", thai: "อ้างว้าง", en: "lonely / desolate" },
+  { category: "Emotions & Mood", thai: "เหงา", en: "lonely / longing for company" },
+  { category: "Emotions & Mood", thai: "เจ็บปวด", en: "hurt / in emotional pain" },
+  { category: "Emotions & Mood", thai: "ใจหาย", en: "heartbroken / sinking feeling" },
+  { category: "Emotions & Mood", thai: "หมดหวัง", en: "hopeless / despairing" },
+  { category: "Emotions & Mood", thai: "สิ้นหวัง", en: "in despair / utterly hopeless" },
+  { category: "Emotions & Mood", thai: "ท้อแท้", en: "discouraged / disheartened" },
+  { category: "Emotions & Mood", thai: "หดหู่", en: "gloomy / depressed" },
+  { category: "Emotions & Mood", thai: "หนักใจ", en: "burdened / weighed down" },
+  { category: "Emotions & Mood", thai: "เครียด", en: "stressed / tense" },
+  { category: "Emotions & Mood", thai: "กดดัน", en: "under pressure" },
+  { category: "Emotions & Mood", thai: "หงุดหงิด", en: "irritated / grumpy" },
+  { category: "Emotions & Mood", thai: "รำคาญ", en: "annoyed / bothered" },
+  { category: "Emotions & Mood", thai: "ขยะแขยง", en: "disgusted / revolted" },
+  { category: "Emotions & Mood", thai: "ละอายใจ", en: "ashamed" },
+  { category: "Emotions & Mood", thai: "อับอาย", en: "embarrassed / humiliated" },
+  { category: "Emotions & Mood", thai: "รู้สึกผิด", en: "feeling guilty" },
+  { category: "Emotions & Mood", thai: "เสียใจ", en: "regretful / sorrowful" },
+  { category: "Emotions & Mood", thai: "น้อยใจ", en: "feeling hurt / sulky" },
+  { category: "Emotions & Mood", thai: "อิจฉา", en: "jealous / envious" },
+  { category: "Emotions & Mood", thai: "ริษยา", en: "envious (of another's success)" },
+  { category: "Emotions & Mood", thai: "หึง", en: "jealous (in romance)" },
+  { category: "Emotions & Mood", thai: "สับสน", en: "confused / bewildered" },
+  { category: "Emotions & Mood", thai: "งงงวย", en: "perplexed / baffled" },
+  { category: "Emotions & Mood", thai: "ตกใจ", en: "startled / shocked" },
+  { category: "Emotions & Mood", thai: "ประหลาดใจ", en: "surprised / astonished" },
+  { category: "Emotions & Mood", thai: "ตะลึง", en: "stunned / dumbfounded" },
+  { category: "Emotions & Mood", thai: "พิศวง", en: "amazed / in awe" },
+  { category: "Emotions & Mood", thai: "หวาดกลัว", en: "frightened / fearful" },
+  { category: "Emotions & Mood", thai: "หวาดระแวง", en: "paranoid / suspicious" },
+  { category: "Emotions & Mood", thai: "ประหม่า", en: "nervous / flustered" },
+  { category: "Emotions & Mood", thai: "ขี้อาย", en: "shy / bashful" },
+  { category: "Emotions & Mood", thai: "มั่นใจ", en: "confident / self-assured" },
+  { category: "Emotions & Mood", thai: "กล้า", en: "brave / bold" },
+  { category: "Emotions & Mood", thai: "ฮึกเหิม", en: "fired up / emboldened" },
+  { category: "Emotions & Mood", thai: "มีแรงบันดาลใจ", en: "inspired / motivated" },
+  { category: "Emotions & Mood", thai: "กระตือรือร้น", en: "enthusiastic / eager" },
+  { category: "Emotions & Mood", thai: "อยากรู้", en: "curious" },
+  { category: "Emotions & Mood", thai: "พอใจ", en: "satisfied / content" },
+  { category: "Emotions & Mood", thai: "ไม่พอใจ", en: "dissatisfied / displeased" },
+  { category: "Emotions & Mood", thai: "เบื่อ", en: "bored / fed up" },
+  { category: "Emotions & Mood", thai: "เฉยๆ", en: "indifferent / so-so" },
+  { category: "Emotions & Mood", thai: "ห่อเหี่ยว", en: "wilted / dejected" },
+  { category: "Emotions & Mood", thai: "ใจร้อน", en: "impatient / hot-headed" },
+  { category: "Emotions & Mood", thai: "ใจเย็น", en: "calm / patient / cool-headed" },
+  { category: "Emotions & Mood", thai: "สงบ", en: "calm / serene / peaceful" }
 ];
 
 const CATEGORIES = [...new Set(ALL_VOCAB.map(v => v.category))];
@@ -903,6 +1039,8 @@ const CAT_ICONS = {
   "Describing Time":       "🕐",
   "Daily Objects":         "🏠",
   "Frequently Used Verbs": "⚡",
+  "Frequently Used Verbs 2": "🔥",
+  "Emotions & Mood": "💛",
   "Hobbies":               "🎯",
   "Colours":               "🎨",
   "Weather":               "🌤️",
@@ -911,8 +1049,143 @@ const CAT_ICONS = {
 /* ═══════════════════════════════════════════
    SETUP SCREEN
 ═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   VOCAB BROWSER MODAL
+═══════════════════════════════════════════ */
+function VocabBrowserModal({ onClose, initialCategory }) {
+  const [filterCat, setFilterCat] = useState(initialCategory);
+  const [search, setSearch]       = useState("");
+
+  const words = ALL_VOCAB.filter(v => {
+    const matchCat = filterCat === "__all__" || v.category === filterCat;
+    const q = search.trim().toLowerCase();
+    const matchSearch = !q ||
+      v.thai.includes(q) ||
+      v.en.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  });
+
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 200,
+      background: "rgba(26,18,9,0.6)",
+      display: "flex", alignItems: "flex-end",
+    }} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+
+      {/* Sheet */}
+      <div className="screen-enter" style={{
+        width: "100%", maxHeight: "92dvh",
+        background: "var(--paper)", borderRadius: "16px 16px 0 0",
+        display: "flex", flexDirection: "column",
+        overflow: "hidden",
+        boxShadow: "0 -4px 32px rgba(26,18,9,0.2)"
+      }}>
+
+        {/* Handle + header */}
+        <div style={{
+          padding: "0.6rem 1rem 0",
+          borderBottom: "1px solid var(--aged)",
+          flexShrink: 0
+        }}>
+          <div style={{ width: 36, height: 4, background: "var(--aged)", borderRadius: 2, margin: "0 auto 0.75rem" }} />
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.7rem" }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.3rem", color: "var(--ink)" }}>
+              Vocabulary
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", fontWeight: 400, color: "var(--muted)", marginLeft: 8 }}>{words.length} words</span>
+            </h2>
+            <button onClick={onClose} style={{
+              background: "none", border: "none", fontSize: "1.4rem",
+              color: "var(--muted)", cursor: "pointer", lineHeight: 1, padding: "0 4px"
+            }}>×</button>
+          </div>
+
+          {/* Search */}
+          <div style={{ position: "relative", marginBottom: "0.7rem" }}>
+            <span style={{ position: "absolute", left: "0.7rem", top: "50%", transform: "translateY(-50%)", fontSize: "0.9rem", color: "var(--muted)", pointerEvents: "none" }}>🔍</span>
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Search Thai or English…"
+              style={{
+                width: "100%", padding: "0.5rem 0.8rem 0.5rem 2.1rem",
+                borderRadius: 8, border: "1.5px solid var(--aged)",
+                background: "#fff", fontSize: "0.88rem",
+                fontFamily: "'DM Sans', sans-serif", color: "var(--ink)",
+                outline: "none"
+              }}
+            />
+            {search && (
+              <button onClick={() => setSearch("")} style={{
+                position: "absolute", right: "0.6rem", top: "50%", transform: "translateY(-50%)",
+                background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: "1rem"
+              }}>×</button>
+            )}
+          </div>
+
+          {/* Category filter — horizontal scroll */}
+          <div style={{
+            display: "flex", gap: "0.4rem", overflowX: "auto", paddingBottom: "0.65rem",
+            scrollbarWidth: "none", msOverflowStyle: "none"
+          }}>
+            {["__all__", ...CATEGORIES].map(cat => {
+              const active = filterCat === cat;
+              const label  = cat === "__all__" ? "All" : cat;
+              const icon   = cat === "__all__" ? "🗂️" : (CAT_ICONS[cat] || "📚");
+              return (
+                <button key={cat} onClick={() => setFilterCat(cat)} style={{
+                  flexShrink: 0,
+                  padding: "0.28rem 0.7rem", borderRadius: 20,
+                  border: "1.5px solid",
+                  borderColor: active ? "var(--gold)" : "var(--aged)",
+                  background: active ? "rgba(200,146,42,0.1)" : "#fff",
+                  color: active ? "var(--gold)" : "var(--muted)",
+                  fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
+                  fontFamily: "'DM Sans', sans-serif", whiteSpace: "nowrap"
+                }}>
+                  {icon} {label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Word list */}
+        <div className="scrollable" style={{ flex: 1, overflowY: "auto", padding: "0.5rem 1rem 2rem" }}>
+          {words.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "3rem 1rem", color: "var(--muted)", fontSize: "0.88rem" }}>
+              No words match your search.
+            </div>
+          ) : (
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <tbody>
+                {words.map((w, i) => (
+                  <tr key={i} style={{ borderBottom: "1px solid var(--aged)" }}>
+                    <td style={{
+                      padding: "0.6rem 0.5rem 0.6rem 0",
+                      fontFamily: "'Noto Serif Thai', serif",
+                      fontSize: "1.05rem", color: "var(--ink)",
+                      fontWeight: 600, width: "42%", verticalAlign: "middle"
+                    }}>{w.thai}</td>
+                    <td style={{
+                      padding: "0.6rem 0 0.6rem 0.5rem",
+                      fontSize: "0.83rem", color: "var(--muted)",
+                      verticalAlign: "middle"
+                    }}>{w.en}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 function SetupScreen({ onStart }) {
   const [selectedCat, setSelectedCat] = useState(CATEGORIES[0]);
+  const [showVocabBrowser, setShowVocabBrowser] = useState(false);
   const [mode, setMode]       = useState("visual");
   const [direction, setDirection] = useState("mix");  // "th-en" | "en-th" | "mix"
   const [qCount, setQCount]   = useState(15);
@@ -940,18 +1213,27 @@ function SetupScreen({ onStart }) {
         display: "flex", flexDirection: "column", gap: "0.5rem",
         boxShadow: "0 2px 8px var(--shadow)"
       }}>
-        {/* Row 1: word count + start button */}
+        {/* Row 1: word count + browse + start button */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
           <div style={{ fontSize: "0.8rem", color: "var(--muted)", fontWeight: 600 }}>
             <span style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--jade)", marginRight: 4 }}>{vocab.length}</span>
             words
           </div>
-          <button onClick={startQuiz} style={{
-            background: "var(--jade)", color: "#fff", border: "none",
-            padding: "0.55rem 1.3rem", borderRadius: 8, fontWeight: 700,
-            fontSize: "0.9rem", cursor: "pointer",
-            fontFamily: "'DM Sans', sans-serif"
-          }}>Start →</button>
+          <div style={{ display: "flex", gap: "0.4rem" }}>
+            <button onClick={() => setShowVocabBrowser(true)} style={{
+              background: "transparent", color: "var(--gold)",
+              border: "1.5px solid var(--gold)",
+              padding: "0.5rem 0.9rem", borderRadius: 8, fontWeight: 600,
+              fontSize: "0.85rem", cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif"
+            }}>📖 Browse</button>
+            <button onClick={startQuiz} style={{
+              background: "var(--jade)", color: "#fff", border: "none",
+              padding: "0.55rem 1.1rem", borderRadius: 8, fontWeight: 700,
+              fontSize: "0.9rem", cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif"
+            }}>Start →</button>
+          </div>
         </div>
         {/* Row 2: question count */}
         <div style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
@@ -1058,6 +1340,12 @@ function SetupScreen({ onStart }) {
           </div>
         </div>
       </div>
+      {showVocabBrowser && (
+        <VocabBrowserModal
+          onClose={() => setShowVocabBrowser(false)}
+          initialCategory={selectedCat}
+        />
+      )}
     </div>
   );
 }
